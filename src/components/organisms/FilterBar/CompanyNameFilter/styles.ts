@@ -12,7 +12,7 @@ export const Content = styled.div<IContent>`
   background-color: ${props => props.theme.colors.white};
   border-radius: 0 20px 20px 20px;
   border: 1px solid ${props => props.theme.colors.gray};
-  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.2);
   display: ${props => (props.show ? 'flex' : 'none')};
   flex-direction: row;
   flex-wrap: wrap;

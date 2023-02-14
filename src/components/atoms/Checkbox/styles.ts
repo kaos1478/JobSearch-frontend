@@ -21,6 +21,7 @@ export const Container = styled.label<IContainer>`
   margin: 0.3rem;
   padding: 0.6rem;
   transition: all 0.5s;
+  font-size: 12px;
   width: min-content;
   ${props => props.active && ActiveStyles}
 `
