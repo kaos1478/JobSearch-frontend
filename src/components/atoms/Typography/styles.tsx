@@ -12,7 +12,7 @@ export const parsedTypographys = {
     style: css`
       font-size: ${props => props.theme.fontSizes.large};
       font-weight: 400;
-      color: ${props => props.theme.colors.primary};
+      color: ${props => props.theme.colors.textBlack};
     `
   },
   heading2: {
@@ -20,23 +20,23 @@ export const parsedTypographys = {
     style: css`
       font-size: ${props => props.theme.fontSizes.medium};
       font-weight: 400;
-      color: ${props => props.theme.colors.text};
+      color: ${props => props.theme.colors.textBlack};
     `
   },
   body1: {
     tag: 'span',
     style: css`
-      font-size: ${props => props.theme.fontSizes.large};
+      font-size: ${props => props.theme.fontSizes.medium};
       font-weight: 100;
-      color: ${props => props.theme.colors.terciary};
+      color: ${props => props.theme.colors.textBlack};
     `
   },
   body2: {
     tag: 'span',
     style: css`
-      font-size: ${props => props.theme.fontSizes.small};
+      font-size: ${props => props.theme.fontSizes.medium};
       font-weight: 400;
-      color: ${props => props.theme.colors.text};
+      color: ${props => props.theme.colors.textBlack};
     `
   },
   div: {
@@ -52,7 +52,7 @@ export const Container = styled('div').attrs<ITypographyProps>(
   })
 )<IContainerProps>`
   ${props => props.styles};
-  ${props => props.theme.colors.text};
+  ${props => props.theme.colors.textBlack};
   margin-bottom: ${props => props.marginBottom || '0'};
   margin-left: ${props => props.marginLeft || '0'};
   margin-right: ${props => props.marginRight || '0'};

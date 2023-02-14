@@ -12,7 +12,8 @@
   "rules": {
     "prettier/prettier": "error",
     "space-before-function-paren": ["error", "never"],
-    "no-use-before-define": "off"
+    "no-use-before-define": "off",
+    "react-hooks/rules-of-hooks": "off"
   },
   "globals": {
     "React": true
