@@ -1,23 +1,24 @@
 // External libs
+import { useState } from 'react'
 
 // Assets
 
 // Componentes
-
-// Subcomponentes and style
 import Button from '@/components/atoms/Button'
 import Checkbox from '@/components/atoms/Checkbox'
-import { setCompanyNameFilter } from '@/redux/slicers/jobs'
-import { useAppDispatch, useAppSelector } from '@/redux/store'
-import { useState } from 'react'
+
+// Subcomponentes and style
 import * as Styled from './styles'
 
 // Services
+import { setCompanyNameFilter } from '@/redux/slicers/jobs'
+import { useAppDispatch, useAppSelector } from '@/redux/store'
 
 // Types
 
 const CompanyNameFilter: React.FC = () => {
   const dispatch = useAppDispatch()
+
   const { jobs, filters } = useAppSelector(state => state.jobsData)
   const [show, setShow] = useState(false)
 
@@ -37,10 +38,10 @@ const CompanyNameFilter: React.FC = () => {
       <Styled.Content show={show}>
         {jobs.map(job => (
           <Checkbox
-            key={`check-${job.jobId}`}
-            label={job.companyName}
             active={filters.companyName.includes(job.companyName)}
             checked={filters.companyName.includes(job.companyName)}
+            key={`check-${job.jobId}`}
+            label={job.companyName}
             onClick={() => handleCheckboxClick(job.companyName)}
           />
         ))}

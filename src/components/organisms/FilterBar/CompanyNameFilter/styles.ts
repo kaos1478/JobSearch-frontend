@@ -22,4 +22,5 @@ export const Content = styled.div<IContent>`
   position: absolute;
   top: 100%;
   width: 400px;
+  z-index: 1;
 `

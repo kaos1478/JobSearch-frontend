@@ -1,17 +1,17 @@
 // External libs
+import { useMemo } from 'react'
 
 // Assets
 
 // Componentes
+import Typography from '@/components/atoms/Typography'
 
 // Subcomponentes and style
-import Typography from '@/components/atoms/Typography'
-import { setSelected, TJob } from '@/redux/slicers/jobs'
-import { useAppDispatch, useAppSelector } from '@/redux/store'
-import { useMemo } from 'react'
 import * as Styled from './styles'
 
 // Services
+import { setSelected, TJob, toggleModal } from '@/redux/slicers/jobs'
+import { useAppDispatch, useAppSelector } from '@/redux/store'
 
 // Types
 interface IJobsListItem {
@@ -24,6 +24,7 @@ const JobListItem: React.FC<IJobsListItem> = ({ job }) => {
 
   const handleClick = () => {
     dispatch(setSelected(job))
+    dispatch(toggleModal())
   }
 
   const active = useMemo(() => {
@@ -38,9 +39,13 @@ const JobListItem: React.FC<IJobsListItem> = ({ job }) => {
       <Typography as="heading2" marginBottom=".5rem">
         {job?.companyName}
       </Typography>
-      <Styled.Description
-        dangerouslySetInnerHTML={{ __html: job?.jobDescription }}
-      />
+      <Typography as="body1" marginBottom=".5rem">
+        {job?.location}
+      </Typography>
+      <Typography as="body1">{job?.estimatedSalary}</Typography>
+      <Styled.PostedAt>
+        <Typography as="body1">{job?.postedDate}</Typography>
+      </Styled.PostedAt>
     </Styled.Container>
   )
 }

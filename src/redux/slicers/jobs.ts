@@ -71,6 +71,7 @@ interface IJobs {
 }
 
 interface IFilter {
+  filteredJobs: TJob[]
   selected?: TJob
   filters: {
     companyName: string[]
@@ -78,16 +79,22 @@ interface IFilter {
   }
 }
 
-interface IState extends IFilter, IJobs {}
+interface IControllers {
+  showModal: boolean
+}
+
+interface IState extends IFilter, IJobs, IControllers {}
 
 const initialState: IState = {
   jobs: [],
   remainingJobs: 0,
   totalJobs: 0,
+  filteredJobs: [],
   filters: {
     companyName: [],
     onlyRecent: false
-  }
+  },
+  showModal: false
 }
 
 export const jobsSlice = createSlice({
@@ -96,8 +103,9 @@ export const jobsSlice = createSlice({
   reducers: {
     setJobs: (state, action: PayloadAction<IJobs>) => {
       state.jobs = action.payload.jobs
+      state.selected = action.payload.jobs[0]
       state.remainingJobs = action.payload.remainingJobs
-      state.remainingJobs = action.payload.remainingJobs
+      state.filteredJobs = action.payload.jobs.slice(0, 10)
     },
     setSelected: (state, action: PayloadAction<TJob>) => {
       state.selected = action.payload
@@ -112,11 +120,15 @@ export const jobsSlice = createSlice({
       } else {
         companyNameFilter.push(action.payload)
       }
+    },
+    toggleModal: state => {
+      state.showModal = !state.showModal
     }
   }
 })
 
 // Action creators are generated for each case reducer function
-export const { setJobs, setSelected, setCompanyNameFilter } = jobsSlice.actions
+export const { setJobs, setSelected, setCompanyNameFilter, toggleModal } =
+  jobsSlice.actions
 
 export default jobsSlice.reducer

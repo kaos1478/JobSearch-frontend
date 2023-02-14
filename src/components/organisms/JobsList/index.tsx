@@ -1,12 +1,12 @@
 // External libs
+import { useAppSelector } from '@/redux/store'
 
 // Assets
 
 // Componentes
+import JobListItem from '@/components/molecules/JobListItem'
 
 // Subcomponentes and style
-import JobListItem from '@/components/molecules/JobListItem'
-import { useAppSelector } from '@/redux/store'
 import * as Styled from './styles'
 
 // Services
@@ -14,18 +14,18 @@ import * as Styled from './styles'
 // Types
 
 const JobsList: React.FC = () => {
-  const { jobs, filters } = useAppSelector(state => state.jobsData)
+  const { filteredJobs, filters } = useAppSelector(state => state.jobsData)
 
   return (
     <Styled.Container>
-      {jobs.map(job => {
+      {filteredJobs.map(job => {
         if (
           filters.companyName.length &&
           filters.companyName.includes(job.companyName)
         ) {
-          return <JobListItem job={job} />
+          return <JobListItem key={`jobs-list-${job.jobId}`} job={job} />
         } else if (!filters.companyName.length) {
-          return <JobListItem job={job} />
+          return <JobListItem key={`jobs-list-${job.jobId}`} job={job} />
         } else {
           return null
         }

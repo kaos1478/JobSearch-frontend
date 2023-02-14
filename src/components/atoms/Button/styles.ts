@@ -29,6 +29,7 @@ export const Container = styled.button<IButtonProps>`
   transition: all 0.5s;
   font-size: 1.1rem;
   ${props => colorVariants[props.color]}
+  margin: ${props => (props.margin ? props.margin : '0')};
 
   &:hover {
     filter: brightness(0.8);

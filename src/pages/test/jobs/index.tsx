@@ -1,7 +1,4 @@
 // External libs
-import JobsPage from '@/components/pages/Jobs'
-import { setJobs, TJob } from '@/redux/slicers/jobs'
-import { useAppDispatch } from '@/redux/store'
 import axios from 'axios'
 import type { NextPage } from 'next'
 import { useEffect } from 'react'
@@ -10,10 +7,13 @@ import { toast } from 'react-toastify'
 // Assets
 
 // Componentes
+import JobsPage from '@/components/pages/Jobs'
 
 // Subcomponentes and style
 
 // Services
+import { setJobs, TJob } from '@/redux/slicers/jobs'
+import { useAppDispatch } from '@/redux/store'
 
 // Types
 interface IJobs {
@@ -23,8 +23,8 @@ interface IJobs {
 }
 
 interface IJobsProps {
-  jobs: IJobs
   error: any
+  jobs: IJobs
 }
 
 const jobs: NextPage<IJobsProps> = ({ jobs, error }) => {

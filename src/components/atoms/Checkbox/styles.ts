@@ -20,8 +20,8 @@ export const Container = styled.label<IContainer>`
   justify-content: center;
   margin: 0.3rem;
   padding: 0.6rem;
-  width: min-content;
   transition: all 0.5s;
+  width: min-content;
   ${props => props.active && ActiveStyles}
 `
 

@@ -1,19 +1,19 @@
 // External libs
+import { InputHTMLAttributes } from 'react'
 
 // Assets
 
 // Componentes
 
 // Subcomponentes and style
-import { InputHTMLAttributes } from 'react'
 import * as Styled from './styles'
 
 // Services
 
 // Types
 interface ICheckbox extends InputHTMLAttributes<HTMLInputElement> {
-  label: string
   active: boolean
+  label: string
 }
 
 const Checkbox: React.FC<ICheckbox> = ({ label, active, ...rest }) => {

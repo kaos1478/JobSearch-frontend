@@ -1,30 +1,24 @@
 // External libs
+import Image from 'next/image'
 
 // Assets
 
 // Componentes
-
-// Subcomponentes and style
 import Button from '@/components/atoms/Button'
 import Typography from '@/components/atoms/Typography'
-import { useAppSelector } from '@/redux/store'
-import Image from 'next/image'
-import { useEffect, useState } from 'react'
+
+// Subcomponentes and style
 import * as Styled from './styles'
 
 // Services
+import { toggleModal } from '@/redux/slicers/jobs'
+import { useAppDispatch, useAppSelector } from '@/redux/store'
 
 // Types
 
 const JobDetails: React.FC = () => {
   const { selected } = useAppSelector(state => state.jobsData)
-  const [imageURL, setImageURL] = useState(
-    `/api/imageProxy?imageUrl=${selected?.companyLogo}`
-  )
-
-  useEffect(() => {
-    setImageURL(`/api/imageProxy?imageUrl=${selected?.companyLogo}`)
-  }, [selected?.companyLogo])
+  const dispatch = useAppDispatch()
 
   return (
     <Styled.Container>
@@ -43,23 +37,27 @@ const JobDetails: React.FC = () => {
         </Styled.Texts>
         <Styled.Actions>
           <Image
-            src={imageURL}
+            src={`/api/imageProxy?imageUrl=${selected?.companyLogo}`}
             width={50}
             height={50}
-            alt="test"
+            alt="logo"
             objectFit="contain"
-            onError={() =>
-              setImageURL(
-                '/api/imageProxy?imageUrl=http://www.cetegeducacao.com.br/wp-content/themes/cetegeducacao/assets/dist/img/no-image.png'
-              )
-            }
           />
-          <Button
-            color="primary"
-            onClick={() => window.open(selected?.OBJurl, '_blank')}
-          >
-            View or Apply
-          </Button>
+          <Styled.Buttons>
+            <Button
+              color="primaryReverse"
+              onClick={() => dispatch(toggleModal())}
+              margin="0 .5rem 0 0"
+            >
+              Back
+            </Button>
+            <Button
+              color="primary"
+              onClick={() => window.open(selected?.OBJurl, '_blank')}
+            >
+              View or Apply
+            </Button>
+          </Styled.Buttons>
         </Styled.Actions>
       </Styled.Header>
       <Styled.Description

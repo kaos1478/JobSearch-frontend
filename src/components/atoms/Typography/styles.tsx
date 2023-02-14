@@ -10,33 +10,33 @@ export const parsedTypographys = {
   heading1: {
     tag: 'h1',
     style: css`
+      color: ${props => props.theme.colors.textBlack};
       font-size: ${props => props.theme.fontSizes.large};
       font-weight: 400;
-      color: ${props => props.theme.colors.textBlack};
     `
   },
   heading2: {
     tag: 'h2',
     style: css`
+      color: ${props => props.theme.colors.textBlack};
       font-size: ${props => props.theme.fontSizes.medium};
       font-weight: 400;
-      color: ${props => props.theme.colors.textBlack};
     `
   },
   body1: {
     tag: 'span',
     style: css`
-      font-size: ${props => props.theme.fontSizes.medium};
-      font-weight: 100;
       color: ${props => props.theme.colors.textBlack};
+      font-size: ${props => props.theme.fontSizes.medium};
+      font-weight: 300;
     `
   },
   body2: {
     tag: 'span',
     style: css`
+      color: ${props => props.theme.colors.textBlack};
       font-size: ${props => props.theme.fontSizes.medium};
       font-weight: 400;
-      color: ${props => props.theme.colors.textBlack};
     `
   },
   div: {

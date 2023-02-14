@@ -3,11 +3,11 @@
 // Assets
 
 // Componentes
+import PageWrapper from '@/components/templates/PageWrapper'
 
 // Subcomponentes and style
-import PageWrapper from '@/components/templates/PageWrapper'
-import CompanyNameFilter from './CompanyNameFilter'
 import * as Styled from './styles'
+import CompanyNameFilter from './CompanyNameFilter'
 
 // Services
 
